@@ -118,12 +118,12 @@ where `config_spec` is one of {`autoencoder_kl_woc_32x32x4.yaml`(base decoder), 
 
 ### Main Results on MSCOCO
 
-|                                                        model                                                        | pretrain | resolution |  fid  |  is   |
-|:-------------------------------------------------------------------------------------------------------------------:| :---:    |  :---:     |:-----:|:-----:|
-|             [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + vanilla VQGAN               | ImageNet-1K  | 224x224 | 19.88 | 37.55 |
-|    [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (base) w/o mask     | ImageNet-1K  | 224x224 | 19.92 | 37.52 |
-| [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 1.5x) w/o mask  | ImageNet-1k  | 224x224 | 19.75 | 37.64 |
-|  [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 2x) w/o mask   | ImageNet-1k  | 224x224 | 19.68 | 37.73 |
+|                                                        model                                                         |  fid  |  is   |
+|:-------------------------------------------------------------------------------------------------------------------:|:-----:|:-----:|
+|             [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + vanilla VQGAN               | 19.88 | 37.55 |
+|    [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (base) w/o mask     | 19.92 | 37.52 |
+| [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 1.5x) w/o mask  | 19.75 | 37.64 |
+|  [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 2x) w/o mask   | 19.68 | 37.73 |
 
 ## Comments 
 
