@@ -25,7 +25,7 @@ The inpainting model sd-v1-5-inpainting.ckpt of [StableDiffusion](https://github
 
 The text2image model v1-5-pruned-emaonly.ckpt of [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) is [here](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned-emaonly.ckpt)
 
-## Inapinting task
+## Inpainting task
 Download our [images and masks ](https://drive.google.com/file/d/1Z9_vGdvs7i8RTQ9GN8RNX1y5i1tP_OSI/view?usp=drive_link).
 ```
 python inpaint_st.py  --config {config_spec}
@@ -33,6 +33,16 @@ python inpaint_st.py  --config {config_spec}
 where `config_spec` is one of {`autoencoder_kl_32x32x4.yaml`(base decoder), `autoencoder_kl_32x32x4_large.yaml`(large decode 1.5x), 
 
 `autoencoder_kl_32x32x4_large2.yaml`(large decoder 2x).
+
+### Main Results on ImageNet
+
+|                                                   model                                                   | pretrain | resolution |  fid   | lpips |      pre_error       |
+|:---------------------------------------------------------------------------------------------------------:| :---:    |  :---:     |:----:|:-----:|:--------------------:|
+|         [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + vanilla VQGAN         | ImageNet-1K  | 224x224 | 9.57 |  0.255  |      1082.8e^-5      |
+|    [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (base)    | ImageNet-1K  | 224x224 | 7.60 |  0.137  |       5.7e^-5        |
+| [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 1.5x) | ImageNet-1k  | 224x224 | 7.55 |  0.136  |       2.6e^-5        |
+|  [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 2x)  | ImageNet-1k  | 224x224 | 7.49 |  0.134  |       2.1e^-5        |
+
 
 ## Text2image task
 
@@ -106,6 +116,14 @@ where `config_spec` is one of {`autoencoder_kl_woc_32x32x4.yaml`(base decoder), 
 
 `autoencoder_kl_woc_32x32x4_large2.yaml`(large decoder 2x).
 
+### Main Results on MSCOCO
+
+|                                                        model                                                        | pretrain | resolution |  fid  |  is   |
+|:-------------------------------------------------------------------------------------------------------------------:| :---:    |  :---:     |:-----:|:-----:|
+|             [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + vanilla VQGAN               | ImageNet-1K  | 224x224 | 19.88 | 37.55 |
+|    [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (base) w/o mask     | ImageNet-1K  | 224x224 | 19.92 | 37.52 |
+| [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 1.5x) w/o mask  | ImageNet-1k  | 224x224 | 19.75 | 37.64 |
+|  [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 2x) w/o mask   | ImageNet-1k  | 224x224 | 19.68 | 37.73 |
 
 ## Comments 
 
