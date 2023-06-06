@@ -1,0 +1,72 @@
+model:
+  base_learning_rate: 4.5e-6
+  target: ldm.models.autoencoder_large2.AutoencoderKL
+  params:
+#    monitor: val/rec_loss
+    ckpt_path: /mnt/output/pre_models/stable_diff_vqauto_text.ckpt
+    embed_dim: 4
+    num_gpus: 8
+
+    scheduler_config:
+      target: ldm.lr_scheduler.LambdaWarmUpCosineScheduler
+      params:
+        verbosity_interval: 0
+        warm_up_steps: 5000
+        lr_start: 0.01
+        lr_max: 1
+
+    scheduler_config_d:
+      target: ldm.lr_scheduler.LambdaWarmUpCosineScheduler_D
+      params:
+        verbosity_interval: 0
+        warm_up_steps: 5000
+        lr_start: 0.01
+        lr_max: 1
+
+    lossconfig:
+      target: ldm.modules.losses.LPIPSWithDiscriminator
+      params:
+        disc_start: 50001
+        kl_weight: 0.000001
+        disc_weight: 0.8
+
+    ddconfig:
+      double_z: True
+      z_channels: 4
+      resolution: 256
+      in_channels: 3
+      out_ch: 3
+      ch: 128
+      ch_mult: [ 1,2,4,4 ]  # num_down = len(ch_mult)-1
+      num_res_blocks: 2
+      attn_resolutions: [ ]
+      dropout: 0.0
+
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 2
+    wrap: True
+    train:
+      target: ldm.data.imagenet.ImageNetSRTrain
+      params:
+        size: 256
+        degradation: pil_nearest
+        Cf_r: 0.5
+    validation:
+      target: ldm.data.imagenet.ImageNetsv
+      params:
+        indir: /mnt/output/myvalsam
+
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 1000
+        max_images: 8
+        increase_log_steps: True
+
+  trainer:
+    benchmark: True
+    accumulate_grad_batches: 1
