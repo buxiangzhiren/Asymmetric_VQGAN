@@ -8,7 +8,7 @@
 
 ## Introduction
 
-We propose the Asymmetric VQGAN, to preserve the information of conditional image input. Asymmetric VQGAN (top) involves two core designs compared with the original VQGAN (down) as shown in the figure. First, we introduce a conditional branch into the decoder of the VQGAN which aims to handle the conditional input for image manipulation tasks. Second, we design a larger decoder for VQGAN to better recover the losing details of the quantized codes. 
+We propose the Asymmetric VQGAN, to preserve the information of conditional image input. Asymmetric VQGAN involves two core designs compared with the original VQGAN as shown in the figure. First, we introduce a conditional branch into the decoder of the VQGAN which aims to handle the conditional input for image manipulation tasks. Second, we design a larger decoder for VQGAN to better recover the losing details of the quantized codes. 
 
 ![teaser](teaser.png)
 Top: The inference process of our symmetric VQGAN. Bottom: The inference process of vanilla VQGAN.
