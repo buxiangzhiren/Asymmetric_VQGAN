@@ -3,7 +3,7 @@
 
 
 
-[**Designing a Better Asymmetric VQGAN for StableDiffusion**](https://arxiv.org/)<br/>
+[**Designing a Better Asymmetric VQGAN for StableDiffusion**](https://arxiv.org/abs/2306.04632)<br/>
 
 
 ## Introduction
@@ -149,7 +149,14 @@ Thanks for open-sourcing!
 ## BibTeX
 
 ```
-
+@misc{zhu2023avqgan,
+      title={Designing a Better Asymmetric VQGAN for StableDiffusion}, 
+        author={Zixin Zhu and Xuelu Feng and Dongdong Chen and Jianmin Bao and Le Wang and Yinpeng Chen and Lu Yuan and Gang Hua},
+        year={2023},
+        eprint={2306.04632},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV}
+}
 ```
 
 
