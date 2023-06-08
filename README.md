@@ -149,13 +149,13 @@ Thanks for open-sourcing!
 ## BibTeX
 
 ```
-@misc{zhu2023avqgan,
+@misc{zhu2023designing,
       title={Designing a Better Asymmetric VQGAN for StableDiffusion}, 
-        author={Zixin Zhu and Xuelu Feng and Dongdong Chen and Jianmin Bao and Le Wang and Yinpeng Chen and Lu Yuan and Gang Hua},
-        year={2023},
-        eprint={2306.04632},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV}
+      author={Zixin Zhu and Xuelu Feng and Dongdong Chen and Jianmin Bao and Le Wang and Yinpeng Chen and Lu Yuan and Gang Hua},
+      year={2023},
+      eprint={2306.04632},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
