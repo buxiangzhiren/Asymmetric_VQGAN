@@ -417,7 +417,7 @@ class AutoencoderKL(pl.LightningModule):
         pre_params = [params for name, params in self.decoder.named_parameters() if not name.startswith('encoder')]
         new_params = [params for name, params in self.decoder.encoder.named_parameters()]
         ae_p = [
-            {'params': pre_params, 'lr': lr * 0.1},
+            {'params': pre_params, 'lr': lr},
             {'params': new_params, 'lr': lr},
         ]
         opt_ae = torch.optim.Adam(ae_p, betas=(0.5, 0.9))
@@ -430,7 +430,7 @@ class AutoencoderKL(pl.LightningModule):
             pre_trained_scheduler_config = self.scheduler_config.copy()
             self.scheduler_config["params"]["lr_min"] = 1e-6 / lr
             self.scheduler_config_d["params"]["lr_min"] = 1e-6 / lr
-            pre_trained_scheduler_config["params"]["lr_min"] = 1e-6 / (lr * 0.1)
+            pre_trained_scheduler_config["params"]["lr_min"] = 1e-6 / lr
             self.scheduler_config["params"]["max_decay_steps"] = total_step
             self.scheduler_config_d["params"]["max_decay_steps"] = total_step
             pre_trained_scheduler_config["params"]["max_decay_steps"] = total_step
@@ -607,7 +607,7 @@ class AutoencoderKL_wocondition(pl.LightningModule):
         pre_params = [params for name, params in self.decoder.named_parameters() if not name.startswith('encoder')]
         new_params = [params for name, params in self.decoder.encoder.named_parameters()]
         ae_p = [
-            {'params': pre_params, 'lr': lr * 0.1},
+            {'params': pre_params, 'lr': lr},
             {'params': new_params, 'lr': lr},
         ]
         opt_ae = torch.optim.Adam(ae_p, betas=(0.5, 0.9))
@@ -620,7 +620,7 @@ class AutoencoderKL_wocondition(pl.LightningModule):
             pre_trained_scheduler_config = self.scheduler_config.copy()
             self.scheduler_config["params"]["lr_min"] = 1e-6 / lr
             self.scheduler_config_d["params"]["lr_min"] = 1e-6 / lr
-            pre_trained_scheduler_config["params"]["lr_min"] = 1e-6 / (lr * 0.1)
+            pre_trained_scheduler_config["params"]["lr_min"] = 1e-6 / lr
             self.scheduler_config["params"]["max_decay_steps"] = total_step
             self.scheduler_config_d["params"]["max_decay_steps"] = total_step
             pre_trained_scheduler_config["params"]["max_decay_steps"] = total_step
