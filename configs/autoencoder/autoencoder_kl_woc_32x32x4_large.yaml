@@ -3,7 +3,7 @@ model:
   target: ldm.models.autoencoder_large.AutoencoderKL_wocondition
   params:
 #    monitor: val/rec_loss
-    ckpt_path: /mnt/output/pre_models/stable_diff_vqauto_text.ckpt
+#    ckpt_path: /mnt/output/pre_models/stable_diff_vqauto_text.ckpt
     embed_dim: 4
     num_gpus: 8
 
