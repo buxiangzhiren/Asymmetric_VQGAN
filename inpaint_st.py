@@ -235,7 +235,7 @@ if __name__ == "__main__":
         "--config_d",
         type=str,
         default="configs/autoencoder/v1-inpainting-inference.yaml",
-        help="dir to obtain config of diffusion mdel",
+        help="dir to obtain config of diffusion model",
     )
     parser.add_argument(
         "--ckpt_d",
