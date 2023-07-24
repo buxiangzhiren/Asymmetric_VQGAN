@@ -138,6 +138,47 @@ where `config_spec` is one of {`autoencoder_kl_woc_32x32x4.yaml`(base decoder), 
 | [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 1.5x) w/o mask  | 19.75 | 37.64 |
 |  [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main) + asymmetric VQGAN (Large 2x) w/o mask   | 19.68 | 37.73 |
 
+# Train your own asymmetric vqgan
+
+## Data preparation
+
+### ImageNet
+The code will try to download (through [Academic
+Torrents](http://academictorrents.com/)) and prepare ImageNet the first time it
+is used. However, since ImageNet is quite large, this requires a lot of disk
+space and time. If you already have ImageNet on your disk, you can speed things
+up by putting the data into
+`./datasets/ImageNet/train`. It should have the following structure:
+
+```
+./datasets/ImageNet/train/
+├── n01440764
+│   ├── n01440764_10026.JPEG
+│   ├── n01440764_10027.JPEG
+│   ├── ...
+├── n01443537
+│   ├── n01443537_10007.JPEG
+│   ├── n01443537_10014.JPEG
+│   ├── ...
+├── ...
+```
+
+### Training autoencoder models
+
+First, download [weights](https://drive.google.com/file/d/1RaOlCRnkGeCv2Nig-bhHuApNJoA98gfg/view?usp=drive_link) of the autoencoder stable_vqgan.ckpt obtained from [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main).
+
+Second, input your own key of wandb in main.py (line 679).
+
+Configs for training a KL-regularized autoencoder on ImageNet are provided at `configs/autoencoder`.
+Training can be started by running
+```
+python main.py --base configs/autoencoder/{config_spec} -t --gpus 0,1,2,3,4,5,6,7 --tag <yourtag>   
+```
+
+where `config_spec` is one of {`autoencoder_kl_32x32x4_train.yaml`(base decoder), `autoencoder_kl_32x32x4_large_train.yaml`(large decode 1.5x), 
+
+`autoencoder_kl_32x32x4_large2_train.yaml`(large decoder 2x). It is worth noting that the parameter num_gpus in `config_spec` is still needed to be set as the same as the number of gpus which you use.
+
 ## Comments 
 
 - Our codebase for the diffusion models builds heavily on [StableDiffusion](https://github.com/runwayml/stable-diffusion/tree/main). 
